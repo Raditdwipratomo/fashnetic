@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Semua Produk - Fashnetic</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="icon" href="Asep" />
+    <style>
+      /* Tambahan CSS untuk halaman produk */
+    </style>
+  </head>
+  <body>
+    <header>
+      <div id="navbar" class="header">
+        <div>
+          <div class="logo">FASHNETIC</div>
+        </div>
+        <nav class="">
+          <ul>
+            <li><a href="index.php#home" class="link-nav">Beranda</a></li>
+            <li>
+              <a href="index.php#about" class="link-nav">Tentang kami</a>
+            </li>
+            <li><a href="index.php#kontak" class="link-nav">Kontak</a></li>
+            <li><a href="allproduk.html" class="link-nav">Produk</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="product-container">
+      <div class="filter-container">
+        <label for="filter">Filter Produk:</label>
+        <select id="filter">
+          <option value="all">Semua</option>
+          <option value="celana">Celana</option>
+          <option value="dress">Dress</option>
+          <option value="rok">Rok</option>
+          <option value="kaos">Kaos</option>
+        </select>
+      </div>
+      <section class="product-section">
+        <div class="product-grid">
+          <!-- Contoh Product Card 1 -->
+          <div class="product-card" data-category="kaos">
+            <img
+              src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="Kaos Pria Casual"
+            />
+            <div class="product-info">
+              <p>Kaos Pria Casual</p>
+              <div class="product-price">Rp 125.000</div>
+            </div>
+          </div>
+
+          <!-- Contoh Product Card 2 -->
+          <div class="product-card" data-category="dress">
+            <img
+              src="https://images.unsplash.com/photo-1623609163859-ca93c959b98a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8ZHJlc3N8ZW58MHx8MHx8fDI%3D"
+              alt="Dress Wanita Elegan"
+            />
+            <div class="product-info">
+              <p>Dress Wanita Elegan</p>
+              <div class="product-price">Rp 350.000</div>
+            </div>
+          </div>
+
+          <!-- Contoh Product Card 3 -->
+          <div class="product-card" data-category="celana">
+            <img
+              src="https://images.unsplash.com/photo-1604695573706-53170668f6a6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzF8fHNoaXJ0fGVufDB8fDB8fHwy"
+              alt="Kemeja Pria Formal"
+            />
+            <div class="product-info">
+              <p>Kemeja Pria Formal</p>
+              <div class="product-price">Rp 280.000</div>
+            </div>
+          </div>
+
+          <!-- Contoh Product Card 4 -->
+          <div class="product-card" data-category="dress">
+            <img
+              src="https://images.pexels.com/photos/291759/pexels-photo-291759.jpeg"
+              alt="Blouse Wanita Motif"
+            />
+            <div class="product-info">
+              <p>Dress Wanita Putih</p>
+              <div class="product-price">Rp 180.000</div>
+            </div>
+          </div>
+
+          <!-- Tambahkan lebih banyak product card di sini -->
+          <div class="product-card" data-category="celana">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_fHQGniGUQVTeo-5Fx4qEA9mrE1EMHPzpeA&s"
+              alt="Celana Jeans Pria"
+            />
+            <div class="product-info">
+              <p>Celana Jeans Pria</p>
+              <div class="product-price">Rp 299.000</div>
+            </div>
+          </div>
+
+          <div class="product-card" data-category="rok">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVioEsN7kqLo8V8cpg5cKMKA_rxEXPzdeTeg&s"
+              alt="Rok Wanita"
+            />
+            <div class="product-info">
+              <p>Rok Wanita</p>
+              <div class="product-price">Rp 195.000</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- <footer>
+      <p>&copy; 2025 Fashion Brand. All rights reserved.</p>
+    </footer> -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const filterSelect = document.getElementById("filter");
+        const cards = document.querySelectorAll(".product-card");
+
+        filterSelect.addEventListener("change", function () {
+          const selectedCategory = this.value;
+
+          cards.forEach((card) => {
+            const category = card.getAttribute("data-category");
+
+            if (selectedCategory === "all" || selectedCategory === category) {
+              card.style.display = "block";
+            } else {
+              card.style.display = "none";
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

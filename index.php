@@ -1,0 +1,282 @@
+<?php
+session_start();
+
+$show_notification = false;
+$message = '';
+$message_type = '';
+
+if (isset($_SESSION['message']) && isset($_SESSION['message_type'])) {
+    $show_notification = true;
+    $message = $_SESSION['message'];
+    $message_type = $_SESSION['message_type'];
+    
+    unset($_SESSION['message']);
+    unset($_SESSION['message_type']);
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $nama = htmlspecialchars(trim($_POST['nama']));
+    $email = htmlspecialchars(trim($_POST['email']));
+    $pesan = htmlspecialchars(trim($_POST['pesan']));
+    
+    if (!empty($nama) && !empty($email) && !empty($pesan)) {      
+        $_SESSION['message'] = "Terima kasih $nama! Pesan Anda telah berhasil dikirim. Kami akan segera menghubungi Anda.";
+        $_SESSION['message_type'] = 'success';
+    } else {
+        $_SESSION['message'] = "Mohon lengkapi semua field yang diperlukan.";
+        $_SESSION['message_type'] = 'error';
+    }
+    
+    header('Location: ' . $_SERVER['PHP_SELF'] . '#kontak');
+    exit();
+}
+?>
+
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Website Fashion</title>
+    <link rel="stylesheet" href="index.css" />
+    <style>
+            .notification {
+        position: fixed;
+        top: 10%;
+        right: 30%;
+        padding: 15px 20px;
+        border-radius: 5px;
+        color:rgb(255, 255, 255);
+        font-weight: 400;
+        z-index: 5000;
+        max-width: 400px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        animation: slideIn 0.8s ease;
+      }
+      
+      .notification.success {
+        background-color:rgb(100, 85, 63);
+      }
+      
+      .notification.error {
+        background-color: #f44336;
+      }
+      
+      .notification .close-btn {
+        float: right;
+        cursor: pointer;
+        margin-left: 10px;
+        font-size: 18px;
+      }
+      
+      @keyframes slideIn {
+        0% {
+          transform: scale(0) ;
+          opacity: 0;
+        }
+        70% {
+          transform: scale(1.1) ;
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1) ;
+          opacity: 1;
+        }
+      }
+      
+      .fade-out {
+        animation: fadeOut 0.5s ease-out forwards;
+      }
+      
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <?php if ($show_notification): ?>
+      <div class="notification <?php echo htmlspecialchars($message_type); ?>" id="notification">
+        <span class="close-btn" onclick="closeNotification()">&times;</span>
+        <?php echo htmlspecialchars($message); ?>
+      </div>
+    <?php endif; ?>
+
+    <header>
+      <div id="navbar" class="navbar-transparent header">
+        <div>
+          <div class="logo">FASHNETIC</div>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#home" class="text">Beranda</a></li>
+            <li><a href="#about" class="text">Tentang kami</a></li>
+            <li><a href="#kontak" class="text">Kontak</a></li>
+            <li><a href="allproduk.html" class="text">Produk</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="overlay"></div>
+        <img
+          src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Model wearing a T-Shirt"
+        />
+        <div class="hero-text">
+          <h1>Welcome to Fashnetic</h1>
+          <p>Pakai Gaya yang Kamu Mau, Temukan di Fashnetic!</p>
+        </div>
+
+        <div class="button">
+          <div class="btn">
+            <a href="allproduk.html">LIHAT PRODUK</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="about" id="about">
+        <div class="image-container">
+          <div class="image-1 scroll-1">
+            <img
+              src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=720&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            />
+          </div>
+
+          <div class="image-2 scroll-2">
+            <img
+              src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt=""
+            />
+          </div>
+          <div class="image-3 scroll-3">
+            <img
+              src="https://plus.unsplash.com/premium_photo-1695575576052-7c271876b075?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt=""
+            />
+          </div>
+        </div>
+        <div class="text-container" id="textContainer">
+          <h1>Tentang Fashnetic</h1>
+          <p>
+            Toko Baju Fashnetic adalah destinasi fashion terpercaya yang hadir
+            untuk memenuhi kebutuhan gaya berpakaian Anda. Berlokasi di Kota
+            Tangerang, kami telah melayani pelanggan sejak 2024 dengan koleksi
+            pakaian pria dan wanita yang beragam — mulai dari gaya kasual,
+            formal, hingga busana harian yang nyaman dikenakan.
+          </p>
+        </div>
+      </section>
+
+      <section class="contact" id="kontak">
+        <div class="container-contact">
+          <div class="contact-info">
+            <h1>Contact</h1>
+            <p>
+              <strong>Alamat Toko:</strong> Jl. Baharuddin No. 123, Kota
+              Tangerang
+            </p>
+            <p><strong>Email:</strong> info@fashnetic.com</p>
+            <p><strong>Telepon:</strong> 0896-86-89-9447</p>
+            <p>
+              <strong>Jam Operasional:</strong> Senin–Sabtu, 09.00–18.00 WIB
+            </p>
+          </div>
+          <div class="container-form">
+            <form class="contact-form" method="POST" action="#kontak">
+              <input type="text" name="nama" id="nama" placeholder="Nama Anda"  />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email Anda"
+               
+              />
+              <textarea
+                name="pesan"
+                placeholder="Masukkan pesan anda..."></textarea>
+              <button type="submit" id="btn-form">KIRIM PESAN</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="map-container">
+          <iframe
+             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.9364279709636!2d106.6322705!3d-6.1742513!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f8d264313b15%3A0x437b7ecc7f8460ed!2sJl.%20Baharuddin%2C%20RT.003%2FRW.002%2C%20Sukarasa%2C%20Kec.%20Tangerang%2C%20Kota%20Tangerang%2C%20Banten!5e0!3m2!1sid!2sid!4v1719681795681!5m2!1sid!2sid"
+            height="300"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <h2>FASHNETIC</h2>
+          <p>Gaya adalah cerminan diri. Temukan pilihan fashion terbaikmu di sini.</p>
+        </div>
+
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Tentang</h4>
+            <ul>
+              <li><a href="#about">Tentang Kami</a></li>
+              <li><a href="allproduk.html">Tentang Produk</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Bantuan</h4>
+            <ul>
+              <li><a href="#">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Hubungi Kami</h4>
+            <ul>
+              <li><a href="mailto:info@fashnetic.com">info@fashnetic.com</a></li>
+              <li><a href="#">0812-3456-7890</a></li>
+              <li><a href="#kontak">Form Kontak</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram">📸</a>
+          <a href="#" aria-label="TikTok">🎵</a>
+          <a href="#" aria-label="YouTube">▶️</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Fashnetic. All rights reserved.</p>
+      </div>
+    </footer>
+    <script>
+      function closeNotification() {
+        const notification = document.getElementById('notification');
+        if (notification) {
+          notification.classList.add('fade-out');
+          setTimeout(() => {
+            notification.remove();
+          }, 500);
+        }
+      }
+
+      if (document.getElementById('notification')) {
+        setTimeout(() => {
+          closeNotification();
+        }, 5000);
+      }
+    </script>
+    <script src="main.js"></script>
+  </body>
+</html>

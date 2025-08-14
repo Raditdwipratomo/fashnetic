@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: black; /* Footer akan terlihat dari belakang */
+    }
+
+    .page {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-color: transparent; /* agar footer bisa "mengintip" */
+    }
+
+    .content {
+      background-color: white;
+      flex: 1;
+      padding-bottom: 300px; /* tinggi footer agar tidak menimpa konten */
+      z-index: 2;
+      position: relative;
+    }
+
+    .footer-background {
+      background-color: black;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      z-index: 0;
+    }
+  </style>
+  <body>
+    <div class="page">
+      <main class="content">
+        <!-- Konten panjang -->
+        <section class="about" id="about">
+          <div class="image-container">
+            <div class="image-1 scroll-1">
+              <img
+                src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=720&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              />
+            </div>
+
+            <div class="image-2 scroll-2">
+              <img
+                src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+              />
+            </div>
+            <div class="image-3 scroll-3">
+              <img
+                src="https://plus.unsplash.com/premium_photo-1695575576052-7c271876b075?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="text-container" id="textContainer">
+            <h1>Tentang Fashnetic</h1>
+            <p>
+              Toko Baju Fashnetic adalah destinasi fashion terpercaya yang hadir
+              untuk memenuhi kebutuhan gaya berpakaian Anda. Berlokasi di Kota
+              Tangerang, kami telah melayani pelanggan sejak 2024 dengan koleksi
+              pakaian pria dan wanita yang beragam — mulai dari gaya kasual,
+              formal, hingga busana harian yang nyaman dikenakan.
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer-background">
+        <!-- Konten footer -->
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad
+          consequuntur assumenda velit quo nam odio voluptatem, aliquid unde.
+          Nulla porro, ut tempore corrupti vero odit incidunt quae reiciendis
+          qui quo. Veniam, veritatis officia iure rerum, molestiae minus
+          blanditiis in nesciunt ducimus facere reiciendis provident, culpa
+          libero aliquam quod recusandae dolorum qui beatae exercitationem.
+          Rerum natus magnam consequuntur laboriosam velit at! Placeat illo
+          expedita laudantium, vitae quae assumenda minima. Quibusdam animi
+          laborum nesciunt sed aut eveniet? Maiores, minima iure ex iusto magni
+          ipsa blanditiis laborum animi mollitia, sapiente necessitatibus amet
+          nam. Mollitia dolores excepturi illum ad atque eum molestias
+          necessitatibus architecto reiciendis. Tempora natus molestias magnam
+          aspernatur asperiores ipsa aliquid. Esse veniam odit inventore ducimus
+          adipisci numquam quaerat maiores provident reiciendis. Qui inventore
+          corrupti commodi aut impedit molestiae et dolore totam deleniti
+          excepturi architecto laboriosam soluta ea nam rem corporis adipisci,
+          incidunt consequatur alias sit. Quas porro hic rerum neque quod. Ullam
+          nobis ad odio! Veniam in distinctio omnis molestias ab totam non vero
+          assumenda maxime. Iusto, animi! Dignissimos delectus, perspiciatis sed
+          nam recusandae excepturi? Iusto itaque accusamus facere exercitationem
+          saepe! Sed adipisci repellat vel necessitatibus atque, nobis itaque
+          fugiat nostrum modi iusto. Aspernatur voluptates, architecto esse
+          dolor eos necessitatibus labore ex saepe a, fugit tempore corporis
+          pariatur est aut sint!
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
